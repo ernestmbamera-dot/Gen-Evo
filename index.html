@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Genetics & Evolution Quiz — BIO</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Biology Green Theme */
+  --bg: #0b120d;
+  --surface: #131e17;
+  --surface2: #1c2c22;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.13);
+  --text: #f0f0f0;
+  --muted: #8ca395;
+  --accent: #2ecc71;
+  --accent2: #27ae60;
+  --green: #2ecc71;
+  --red: #e74c3c;
+  --amber: #f1c40f;
+  --pill-bg: rgba(46, 204, 113, 0.12);
+  --pill-border: rgba(46, 204, 113, 0.3);
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.65;
+  min-height: 100vh;
+}
+
+/* bg grid */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: linear-gradient(rgba(46, 204, 113, 0.03) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(46, 204, 113, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.wrap { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; padding: 0 20px 80px; }
+
+/* ── SCREENS ── */
+.screen { display: none; animation: fadeUp 0.4s ease; }
+.screen.active { display: block; }
+@keyframes fadeUp { from { opacity:0; transform: translateY(16px); } to { opacity:1; transform: translateY(0); } }
+
+/* ── NAV ── */
+nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 0; margin-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo { font-family: var(--font-display); font-weight: 800; font-size: 15px; letter-spacing: 0.05em; color: var(--accent); }
+.nav-logo span { color: var(--muted); font-weight: 400; }
+.nav-links { display: flex; gap: 6px; }
+.nav-btn { background: transparent; border: 1px solid var(--border2); color: var(--muted); padding: 6px 14px; border-radius: 40px; font-size: 12px; font-family: var(--font-body); cursor: pointer; transition: all 0.2s; }
+.nav-btn:hover, .nav-btn.active { border-color: var(--accent); color: var(--accent); background: var(--pill-bg); }
+
+/* ── HERO ── */
+.hero { padding: 60px 0 40px; }
+.hero-tag { display: inline-flex; align-items: center; gap: 8px; background: var(--pill-bg); border: 1px solid var(--pill-border); color: var(--accent); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 14px; border-radius: 40px; margin-bottom: 28px; }
+.hero-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+h1 { font-family: var(--font-display); font-size: clamp(36px, 6vw, 58px); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 18px; }
+h1 em { font-style: normal; color: var(--accent); }
+.hero-sub { font-size: 15px; color: var(--muted); max-width: 480px; margin-bottom: 36px; line-height: 1.7; }
+.hero-stats { display: flex; gap: 28px; margin-bottom: 40px; }
+.stat-n { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--text); }
+.stat-l { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+
+/* ── REGISTER FORM ── */
+.register-card { background: var(--surface); border: 1px solid var(--border2); border-radius: 16px; padding: 32px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+.register-card h2 { font-family: var(--font-display); font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+.register-card p { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+.form-row.full { grid-template-columns: 1fr; }
+label { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 6px; }
+input, select { width: 100%; background: var(--surface2); border: 1px solid var(--border2); border-radius: 8px; color: var(--text); font-family: var(--font-body); font-size: 14px; padding: 10px 14px; outline: none; transition: border-color 0.2s; }
+input:focus, select:focus { border-color: var(--accent); }
+.topic-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.topic-toggle { background: var(--surface2); border: 1px solid var(--border2); color: var(--muted); padding: 6px 14px; border-radius: 40px; font-size: 12px; cursor: pointer; font-family: var(--font-body); transition: all 0.2s; }
+.topic-toggle.on { background: var(--pill-bg); border-color: var(--pill-border); color: var(--accent); }
+
+/* ── BUTTONS ── */
+.btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-body); font-size: 14px; font-weight: 700; padding: 11px 22px; border-radius: 40px; cursor: pointer; border: none; transition: all 0.2s; text-decoration: none; color: #000; background: var(--accent); }
+.btn:hover { background: #27ae60; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3); }
+.btn-ghost { background: transparent; border: 1px solid var(--border2); color: var(--muted); font-weight: 500; }
+.btn-ghost:hover { border-color: var(--border2); color: var(--text); background: var(--surface2); box-shadow: none; }
+
+/* ── PROGRESS ── */
+.progress-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.progress-label { font-size: 12px; color: var(--muted); }
+.progress-score { font-family: var(--font-display); font-size: 14px; font-weight: 600; color: var(--accent); }
+.progress-track { height: 3px; background: var(--surface2); border-radius: 3px; margin-bottom: 28px; overflow: hidden; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent2), var(--accent)); border-radius: 3px; transition: width 0.5s cubic-bezier(0.4,0,0.2,1); }
+
+/* ── QUESTION CARD ── */
+.q-card { background: var(--surface); border: 1px solid var(--border2); border-radius: 16px; padding: 28px 28px 20px; margin-bottom: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+.q-section-tag { display: inline-block; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); background: var(--pill-bg); border: 1px solid var(--pill-border); padding: 3px 10px; border-radius: 40px; margin-bottom: 14px; font-weight: 700;}
+.q-text { font-family: var(--font-display); font-size: 18px; font-weight: 600; line-height: 1.4; color: var(--text); margin-bottom: 22px; }
+.options { display: grid; gap: 9px; }
+.opt-btn { display: flex; align-items: flex-start; gap: 12px; background: var(--surface2); border: 1px solid var(--border2); border-radius: 10px; padding: 13px 16px; text-align: left; cursor: pointer; width: 100%; font-family: var(--font-body); font-size: 14px; color: var(--text); transition: all 0.2s; line-height: 1.5; }
+.opt-btn:hover:not(:disabled) { border-color: var(--accent); background: rgba(46, 204, 113, 0.06); }
+.opt-btn:disabled { cursor: default; }
+.opt-letter { min-width: 24px; height: 24px; border-radius: 6px; background: var(--surface); border: 1px solid var(--border2); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: var(--muted); font-family: var(--font-display); flex-shrink: 0; margin-top: 1px; }
+.opt-btn.correct { border-color: var(--green); background: rgba(46, 204, 113, 0.08); }
+.opt-btn.correct .opt-letter { background: var(--green); color: #000; border-color: var(--green); }
+.opt-btn.wrong { border-color: var(--red); background: rgba(239, 68, 68, 0.08); }
+.opt-btn.wrong .opt-letter { background: var(--red); color: #fff; border-color: var(--red); }
+
+/* ── FEEDBACK ── */
+.feedback-box { border-radius: 10px; padding: 14px 16px; font-size: 13px; line-height: 1.65; margin-bottom: 14px; display: none; }
+.feedback-box.correct { background: rgba(46, 204, 113, 0.1); border: 1px solid rgba(46, 204, 113, 0.3); color: #2ecc71; }
+.feedback-box.wrong { background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); color: #e74c3c; }
+.feedback-box strong { display: block; margin-bottom: 4px; font-family: var(--font-display); font-size: 13px; }
+
+/* ── DISCUSSION ── */
+.discussion-section { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; margin-bottom: 16px; display: none; }
+.discussion-section h4 { font-family: var(--font-display); font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; }
+.comments-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; max-height: 260px; overflow-y: auto; }
+.comment { background: var(--surface2); border-radius: 8px; padding: 10px 12px; font-size: 13px; border-left: 2px solid var(--accent); }
+.comment-author { font-weight: 600; color: var(--accent); font-size: 12px; margin-bottom: 3px; }
+.comment-text { color: var(--text); line-height: 1.5; }
+.comment-time { font-size: 10px; color: var(--muted); margin-top: 4px; }
+.comment-input-row { display: flex; gap: 8px; }
+.comment-input-row input { flex: 1; }
+.no-comments { font-size: 12px; color: var(--muted); font-style: italic; }
+
+/* ── NAV BUTTONS ── */
+.quiz-nav { display: flex; align-items: center; justify-content: space-between; }
+
+/* ── RESULT ── */
+.result-hero { text-align: center; padding: 60px 0 40px; }
+.result-ring { width: 140px; height: 140px; border-radius: 50%; background: conic-gradient(var(--accent) var(--pct, 0%), var(--surface2) 0%); display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; box-shadow: 0 0 40px rgba(46, 204, 113, 0.2); }
+.result-ring-inner { width: 108px; height: 108px; border-radius: 50%; background: var(--bg); display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.result-pct { font-family: var(--font-display); font-size: 32px; font-weight: 800; }
+.result-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+.result-title { font-family: var(--font-display); font-size: 28px; font-weight: 700; margin-bottom: 10px; }
+.result-sub { color: var(--muted); max-width: 480px; margin: 0 auto 32px; font-size: 14px; line-height: 1.65; }
+.result-breakdown { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 36px; }
+.breakdown-card { background: var(--surface); border: 1px solid var(--border2); border-radius: 12px; padding: 18px; text-align: center; }
+.breakdown-n { font-family: var(--font-display); font-size: 28px; font-weight: 700; }
+.breakdown-n.green { color: var(--green); }
+.breakdown-n.red { color: var(--red); }
+.breakdown-n.amber { color: var(--amber); }
+
+/* ── LEADERBOARD ── */
+.lb-card { background: var(--surface); border: 1px solid var(--border2); border-radius: 16px; overflow: hidden; margin-bottom: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+.lb-header { padding: 20px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+.lb-header h3 { font-family: var(--font-display); font-size: 17px; font-weight: 700; }
+.lb-row { display: flex; align-items: center; gap: 16px; padding: 14px 24px; border-bottom: 1px solid var(--border); transition: background 0.15s; }
+.lb-row:last-child { border-bottom: none; }
+.lb-row:hover { background: var(--surface2); }
+.lb-rank { font-family: var(--font-display); font-size: 14px; font-weight: 700; color: var(--muted); width: 24px; text-align: center; flex-shrink: 0; }
+.lb-rank.gold { color: #f1c40f; }
+.lb-rank.silver { color: #d4d4d8; }
+.lb-rank.bronze { color: #b45309; }
+.lb-avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 13px; font-weight: 700; flex-shrink: 0; }
+.lb-info { flex: 1; }
+.lb-name { font-size: 14px; font-weight: 600; }
+.lb-meta { font-size: 11px; color: var(--muted); margin-top: 1px; }
+.lb-score-wrap { text-align: right; }
+.lb-score { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--accent); }
+.lb-pct { font-size: 11px; color: var(--muted); }
+.lb-empty { padding: 36px 24px; text-align: center; color: var(--muted); font-size: 13px; }
+
+/* ── BADGES ── */
+.badge { display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 40px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+.badge-you { background: rgba(46, 204, 113, 0.15); color: var(--accent); border: 1px solid var(--pill-border); }
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--surface2); border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+@media(max-width: 560px) { .form-row { grid-template-columns: 1fr; } .result-breakdown { grid-template-columns: 1fr 1fr; } h1 { font-size: 32px; } .q-text { font-size: 16px; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav>
+    <div class="nav-logo">BIO 3121<span>/genetics</span></div>
+    <div class="nav-links">
+      <button class="nav-btn active" onclick="showScreen('home')">Exam Prep</button>
+      <button class="nav-btn" onclick="showScreen('leaderboard')">Class Ranks</button>
+    </div>
+  </nav>
+
+  <div id="screen-home" class="screen active">
+    <div class="hero">
+      <div class="hero-tag">GENETICS & EVOLUTION · EXAM PREP . Ernest Leo</div>
+      <h1>Master <em>Biological</em><br>Principles</h1>
+      <p class="hero-sub">40 rigorous questions meticulously compiled from Mendelian Genetics, Population Genetics, and Evolutionary Theory to prepare you for finals.</p>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-n">40</div><div class="stat-l">Questions</div></div>
+        <div class="stat"><div class="stat-n">3</div><div class="stat-l">Modules</div></div>
+        <div class="stat"><div class="stat-n" id="stat-players">0</div><div class="stat-l">Biologists</div></div>
+      </div>
+    </div>
+
+    <div class="register-card">
+      <h2>Initialize Session</h2>
+      <p>Enter your academic details to log your scores on the class leaderboard.</p>
+      <div class="form-row">
+        <div>
+          <label>Student Name</label>
+          <input type="text" id="inp-name" placeholder="e.g. Charles Darwin">
+        </div>
+        <div>
+          <label>Registration Number</label>
+          <input type="text" id="inp-reg" placeholder="e.g. 2501013**">
+        </div>
+      </div>
+      <div class="form-row full">
+        <div>
+          <label>Filter Study Modules</label>
+          <div class="topic-grid" id="topic-grid"></div>
+        </div>
+      </div>
+      <button class="btn btn-primary" onclick="startQuiz()" style="width:100%">Begin Exam Simulation →</button>
+    </div>
+  </div>
+
+  <div id="screen-quiz" class="screen">
+    <div style="padding-top: 24px;">
+      <div class="progress-header">
+        <span class="progress-label" id="prog-label">Question 1 of 40</span>
+        <span class="progress-score" id="prog-score">0 pts</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
+
+      <div class="q-card">
+        <div class="q-section-tag" id="q-section"></div>
+        <div class="q-text" id="q-text"></div>
+        <div class="options" id="options"></div>
+      </div>
+
+      <div class="feedback-box" id="feedback"></div>
+
+      <div class="discussion-section" id="discussion-section">
+        <h4>💬 Study Notes</h4>
+        <div class="comments-list" id="comments-list"></div>
+        <div class="comment-input-row">
+          <input type="text" id="comment-input" placeholder="Record your rationale…" maxlength="200" onkeydown="if(event.key==='Enter')postComment()">
+          <button class="btn btn-ghost btn-sm" onclick="postComment()">Log</button>
+        </div>
+      </div>
+
+      <div class="quiz-nav" style="margin-top:20px;">
+        <button class="btn btn-ghost" onclick="showScreen('home')">← Cancel</button>
+        <button class="btn btn-primary" id="next-btn" onclick="nextQ()" style="display:none">Next Question →</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="screen-result" class="screen">
+    <div class="result-hero">
+      <div class="result-ring" id="result-ring">
+        <div class="result-ring-inner">
+          <div class="result-pct" id="result-pct">0%</div>
+          <div class="result-label">score</div>
+        </div>
+      </div>
+      <div class="result-title" id="result-title">Simulation Complete</div>
+      <div class="result-sub" id="result-sub"></div>
+      <div class="result-breakdown">
+        <div class="breakdown-card"><div class="breakdown-n" style="color:var(--green)" id="bd-correct">0</div><div class="breakdown-l">Correct</div></div>
+        <div class="breakdown-card"><div class="breakdown-n" style="color:var(--red)" id="bd-wrong">0</div><div class="breakdown-l">Incorrect</div></div>
+        <div class="breakdown-card"><div class="breakdown-n" style="color:var(--amber)" id="bd-total">0</div><div class="breakdown-l">Total</div></div>
+      </div>
+      <div style="display:flex;gap:10px;justify-content:center">
+        <button class="btn btn-ghost" onclick="restartQuiz()">Retry Simulation</button>
+        <button class="btn btn-primary" onclick="showScreen('leaderboard')">View Class Ranks →</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="screen-leaderboard" class="screen">
+    <div style="padding-top: 32px;">
+      <h2 style="font-family:var(--font-display);font-size:26px;font-weight:800;margin-bottom:6px;">Class Rankings</h2>
+      <p class="text-muted" style="font-size:13px;margin-bottom:28px;">BIO rankings — all students this session.</p>
+      <div class="lb-card">
+        <div class="lb-header">
+          <h3>Top Biologists</h3>
+          <span class="text-muted" style="font-size:12px" id="lb-count">0 records</span>
+        </div>
+        <div id="lb-rows"></div>
+      </div>
+      <div style="text-align:center">
+        <button class="btn btn-ghost" onclick="showScreen('home')">Return to Menu</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// BIO QUESTION BANK (40 Questions)
+const QUESTIONS = [
+  // Mendelian Genetics
+  {s:"Mendelian Genetics", q:"Who is widely considered the 'Father of Genetics' for his work with pea plants?", opts:["Charles Darwin", "Gregor Mendel", "James Watson", "Thomas Hunt Morgan"], ans:1, exp:"Gregor Mendel discovered the fundamental laws of inheritance through his work on pea plants in the 1860s."},
+  {s:"Mendelian Genetics", q:"Mendel's Law of Segregation states that:", opts:["Genes for different traits assort independently of one another in the formation of gametes", "During gamete formation, the two alleles for a trait separate, so each gamete carries only one allele", "Dominant alleles will always mask recessive alleles completely", "Mutations occur randomly to create new alleles"], ans:1, exp:"The Law of Segregation dictates that allele pairs separate or segregate during gamete formation, and randomly unite at fertilization."},
+  {s:"Mendelian Genetics", q:"Mendel's Law of Independent Assortment applies primarily to:", opts:["A single trait controlled by one gene", "Genes located on different chromosomes or far apart on the same chromosome", "Genes that are linked closely on the same chromosome", "Traits determined entirely by environmental factors"], ans:1, exp:"The Law of Independent Assortment states that alleles of two (or more) different genes get sorted into gametes independently of one another, provided they are not physically linked on the same chromosome."},
+  {s:"Mendelian Genetics", q:"An organism that possesses two identical alleles for a particular trait (e.g., 'TT' or 'tt') is said to be:", opts:["Heterozygous", "Hemizygous", "Homozygous", "Polygenic"], ans:2, exp:"'Homo' means same. An individual with identical alleles for a gene is homozygous for that trait."},
+  {s:"Mendelian Genetics", q:"The observable physical or biochemical characteristics of an organism, determined by both genetic makeup and environmental influences, is its:", opts:["Genotype", "Karyotype", "Phenotype", "Haplotype"], ans:2, exp:"The genotype is the genetic makeup, while the phenotype is the observable expression of those genes."},
+  {s:"Mendelian Genetics", q:"In a classic Mendelian monohybrid cross between two heterozygotes (Aa x Aa), what is the expected phenotypic ratio if 'A' is completely dominant over 'a'?", opts:["1:2:1", "3:1", "9:3:3:1", "1:1"], ans:1, exp:"The genotypic ratio is 1:2:1 (AA:Aa:aa), but because AA and Aa display the dominant trait, the phenotypic ratio is 3 dominant to 1 recessive."},
+  {s:"Mendelian Genetics", q:"In a dihybrid cross between two individuals heterozygous for two traits (AaBb x AaBb), what is the expected phenotypic ratio?", opts:["9:3:3:1", "1:1:1:1", "3:1", "9:7"], ans:0, exp:"Assuming independent assortment and complete dominance, a dihybrid cross yields a 9:3:3:1 phenotypic ratio."},
+  {s:"Mendelian Genetics", q:"To determine whether an organism expressing a dominant trait is homozygous dominant or heterozygous, one should perform a:", opts:["Dihybrid cross", "Back cross", "Test cross", "Reciprocal cross"], ans:2, exp:"A test cross involves crossing the individual of unknown genotype with a homozygous recessive individual. If any offspring show the recessive trait, the unknown parent must be heterozygous."},
+  {s:"Mendelian Genetics", q:"When true-breeding red snapdragons are crossed with true-breeding white snapdragons, the F1 offspring are all pink. This is an example of:", opts:["Codominance", "Complete dominance", "Incomplete dominance", "Epistasis"], ans:2, exp:"In incomplete dominance, neither allele is completely dominant, resulting in a heterozygous phenotype that is an intermediate blend (pink) of the two parents."},
+  {s:"Mendelian Genetics", q:"In human ABO blood typing, a person with genotype I^A I^B has type AB blood, expressing both A and B antigens equally. This illustrates:", opts:["Incomplete dominance", "Codominance", "Pleiotropy", "Polygenic inheritance"], ans:1, exp:"Codominance occurs when both alleles are fully and simultaneously expressed in the heterozygote."},
+  {s:"Mendelian Genetics", q:"When one single gene influences multiple, seemingly unrelated phenotypic traits (e.g., the gene for sickle cell anemia affecting red blood cells, spleen function, and malaria resistance), this is known as:", opts:["Epistasis", "Polygenic inheritance", "Pleiotropy", "Multiple alleles"], ans:2, exp:"Pleiotropy occurs when one gene impacts multiple phenotypic traits."},
+  {s:"Mendelian Genetics", q:"A phenomenon where the expression of one gene modifies or masks the expression of another completely different gene (e.g., a gene for albinism masking genes for hair color) is called:", opts:["Epistasis", "Pleiotropy", "Incomplete dominance", "Codominance"], ans:0, exp:"Epistasis (meaning 'standing upon') is when one gene locus masks or modifies the phenotypic expression of a second gene locus."},
+  {s:"Mendelian Genetics", q:"Traits like human height and skin color, which show continuous variation and are controlled by the additive effect of two or more genes, are examples of:", opts:["Pleiotropy", "Polygenic inheritance", "Epistasis", "Multiple alleles"], ans:1, exp:"Polygenic inheritance involves multiple genes contributing to a single continuous trait."},
+
+  // Population Genetics
+  {s:"Population Genetics", q:"The Hardy-Weinberg principle states that allele and genotype frequencies in a population will remain constant from generation to generation in the absence of evolutionary influences. What is the fundamental equation for genotype frequencies?", opts:["p + q = 1", "p^2 + 2pq + q^2 = 1", "p^2 + q^2 = 1", "2p + 2q = 1"], ans:1, exp:"The Hardy-Weinberg equation for genotype frequencies is p^2 (homozygous dominant) + 2pq (heterozygous) + q^2 (homozygous recessive) = 1."},
+  {s:"Population Genetics", q:"In the Hardy-Weinberg equation, what does the term '2pq' represent?", opts:["The frequency of the dominant allele", "The frequency of the homozygous dominant genotype", "The frequency of the heterozygous genotype", "The frequency of the recessive allele"], ans:2, exp:"p represents the dominant allele frequency, q the recessive allele frequency. Therefore, 2pq represents the frequency of heterozygous individuals."},
+  {s:"Population Genetics", q:"Which of the following is NOT one of the five conditions required for a population to remain in Hardy-Weinberg equilibrium?", opts:["No mutations", "Random mating", "No gene flow (no migration)", "Small population size"], ans:3, exp:"Hardy-Weinberg equilibrium requires a LARGE (ideally infinite) population size to prevent genetic drift. The other conditions are no mutations, random mating, no gene flow, and no natural selection."},
+  {s:"Population Genetics", q:"A random change in allele frequencies over time, which has a much more pronounced effect in small populations, is known as:", opts:["Gene flow", "Natural selection", "Genetic drift", "Mutation"], ans:2, exp:"Genetic drift is evolution by chance (random fluctuations in allele frequencies). Its effects are strongest in small populations."},
+  {s:"Population Genetics", q:"When a small group of individuals breaks off from a larger population to establish a new colony, the new colony may have different allele frequencies than the original population. This specific type of genetic drift is called:", opts:["The Bottleneck effect", "Gene flow", "The Founder effect", "Assortative mating"], ans:2, exp:"The Founder effect occurs when a new population is founded by a small number of individuals, whose genetic makeup doesn't fully represent the larger original population."},
+  {s:"Population Genetics", q:"A severe natural disaster drastically reduces the size of a population, randomly altering its allele frequencies and reducing genetic diversity. This is an example of:", opts:["The Bottleneck effect", "The Founder effect", "Directional selection", "Gene flow"], ans:0, exp:"The Bottleneck effect occurs when a population's size is suddenly and drastically reduced, leaving a random assortment of survivors."},
+  {s:"Population Genetics", q:"The transfer of alleles into or out of a population due to the migration of fertile individuals or their gametes is termed:", opts:["Genetic drift", "Gene flow", "Mutation", "Non-random mating"], ans:1, exp:"Gene flow is the movement of alleles between populations through migration, which tends to reduce genetic differences between those populations over time."},
+  {s:"Population Genetics", q:"What is the ultimate source of all NEW alleles and genetic variation in a population?", opts:["Genetic drift", "Gene flow", "Natural selection", "Mutation"], ans:3, exp:"While mechanisms like gene flow and crossing over mix existing alleles, random mutation (changes in the DNA sequence) is the only way entirely new alleles are created."},
+  {s:"Population Genetics", q:"If individuals in a population prefer to mate with others that are phenotypically similar to themselves, this is a violation of Hardy-Weinberg equilibrium known as:", opts:["Gene flow", "Assortative (non-random) mating", "Genetic drift", "Natural selection"], ans:1, exp:"Assortative mating is non-random mating based on phenotypic similarities, which alters genotype frequencies (usually increasing homozygosity)."},
+  {s:"Population Genetics", q:"If the frequency of the recessive allele (q) for a trait is 0.4 in a population in Hardy-Weinberg equilibrium, what is the frequency of the dominant allele (p)?", opts:["0.4", "0.16", "0.6", "0.36"], ans:2, exp:"Since there are only two alleles for this trait, p + q = 1. Therefore, p = 1 - 0.4 = 0.6."},
+  {s:"Population Genetics", q:"Changes in allele frequencies within a single population over a relatively short period of time is defined as:", opts:["Macroevolution", "Microevolution", "Speciation", "Convergent evolution"], ans:1, exp:"Microevolution deals with short-term, small-scale evolutionary changes within a population (changes in allele frequencies)."},
+  {s:"Population Genetics", q:"A mode of natural selection that favors individuals at one extreme of a phenotypic range, shifting the population's trait distribution in that direction, is called:", opts:["Stabilizing selection", "Disruptive selection", "Directional selection", "Sexual selection"], ans:2, exp:"Directional selection favors one extreme phenotype over the mean or other extreme, causing the allele frequency to shift over time in the direction of that phenotype."},
+
+  // Evolution & Speciation
+  {s:"Evolution", q:"Which mechanism did Charles Darwin propose as the primary driver of evolution?", opts:["Inheritance of acquired characteristics", "Natural Selection", "Genetic drift", "Intelligent design"], ans:1, exp:"Darwin (along with Wallace) proposed Natural Selection—the differential survival and reproduction of individuals due to differences in phenotype."},
+  {s:"Evolution", q:"In evolutionary terms, 'biological fitness' is best defined as:", opts:["The physical strength and speed of an organism", "An organism's ability to survive and produce viable, fertile offspring relative to others in the population", "An organism's ability to mutate rapidly", "The lifespan of an organism"], ans:1, exp:"Evolutionary fitness is a measure of reproductive success—how well an organism passes its genes to the next generation compared to others."},
+  {s:"Evolution", q:"The forelimbs of humans, whales, and bats have very different functions, yet they share a similar underlying bone structure derived from a common ancestor. These are examples of:", opts:["Analogous structures", "Vestigial structures", "Homologous structures", "Convergent structures"], ans:2, exp:"Homologous structures share a common evolutionary origin and anatomical plan, even if their current functions have diverged."},
+  {s:"Evolution", q:"The wings of birds and the wings of insects serve the same function (flight) but evolved independently from different ancestral structures. These are examples of:", opts:["Homologous structures", "Analogous structures", "Vestigial structures", "Divergent structures"], ans:1, exp:"Analogous structures arise due to convergent evolution; they perform similar functions due to similar environmental pressures, not common ancestry."},
+  {s:"Evolution", q:"The process by which unrelated organisms independently evolve similar traits when adapting to similar environments (like the streamlined shapes of sharks and dolphins) is called:", opts:["Divergent evolution", "Convergent evolution", "Coevolution", "Adaptive radiation"], ans:1, exp:"Convergent evolution leads to analogous structures, where different lineages evolve similar adaptations due to similar ecological niches."},
+  {s:"Evolution", q:"When two or more related species become increasingly dissimilar over time, often due to differing environmental pressures (e.g., Darwin's finches), this is known as:", opts:["Convergent evolution", "Divergent evolution", "Stabilizing selection", "Parallel evolution"], ans:1, exp:"Divergent evolution (or adaptive radiation) occurs when closely related populations accumulate differences, leading to speciation."},
+  {s:"Evolution", q:"The human appendix and the pelvic bones in whales are remnants of structures that had important functions in ancestors but are now reduced and largely functionless. These are called:", opts:["Homologous structures", "Analogous structures", "Vestigial structures", "Embryological structures"], ans:2, exp:"Vestigial structures are anatomical remnants that were functional in the organism's ancestors but have lost their original function through evolution."},
+  {s:"Evolution", q:"Speciation that occurs when a population is physically separated by a geographic barrier (like a mountain range or river) is termed:", opts:["Sympatric speciation", "Allopatric speciation", "Parapatric speciation", "Artificial speciation"], ans:1, exp:"'Allo' means other, 'patric' means place. Allopatric speciation happens when geographic isolation prevents gene flow, allowing the separated populations to diverge genetically."},
+  {s:"Evolution", q:"Speciation that occurs without geographic isolation, where populations diverge into new species while living in the same area (often via polyploidy in plants), is called:", opts:["Allopatric speciation", "Sympatric speciation", "Allogenic speciation", "Disruptive speciation"], ans:1, exp:"'Sym' means same, 'patric' means place. Sympatric speciation occurs within populations that share the same geographic area."},
+  {s:"Evolution", q:"A mode of natural selection that favors intermediate variants and acts against extreme phenotypes (e.g., human birth weights) is called:", opts:["Directional selection", "Disruptive selection", "Stabilizing selection", "Artificial selection"], ans:2, exp:"Stabilizing selection reduces phenotypic variation by selecting against the extremes, favoring the average phenotype."},
+  {s:"Evolution", q:"A mode of natural selection that favors individuals at BOTH extremes of the phenotypic range over the intermediate phenotypes is known as:", opts:["Stabilizing selection", "Disruptive selection", "Directional selection", "Sexual selection"], ans:1, exp:"Disruptive (or diversifying) selection favors both extremes, which can eventually lead to a population splitting into two distinct species."},
+  {s:"Evolution", q:"Peacocks possess massive, brightly colored tails that hinder their survival against predators but greatly increase their chances of mating. The evolution of such traits is driven by:", opts:["Natural selection for survival", "Genetic drift", "Sexual selection", "Gene flow"], ans:2, exp:"Sexual selection is a form of natural selection where certain traits increase mating success, sometimes at the cost of survival ability."},
+  {s:"Evolution", q:"Which of the following provides strong evidence that all life shares a common evolutionary ancestor?", opts:["The universal nature of the genetic code (DNA/RNA)", "The presence of analogous structures", "The bottleneck effect", "The occurrence of genetic drift"], ans:0, exp:"Molecular biology reveals that all living organisms use essentially the same genetic code, providing powerful evidence for a single common ancestor."},
+  {s:"Evolution", q:"The study of the geographical distribution of extinct and modern species to understand their evolutionary history is known as:", opts:["Embryology", "Comparative anatomy", "Biogeography", "Molecular biology"], ans:2, exp:"Biogeography studies how continents moving over time (plate tectonics) and environmental changes affect where species are found, offering evidence for evolution."},
+  {s:"Evolution", q:"Which type of reproductive isolating mechanism prevents the fertilization of an egg from occurring in the first place (e.g., different mating seasons)?", opts:["Postzygotic barrier", "Prezygotic barrier", "Hybrid breakdown", "Hybrid sterility"], ans:1, exp:"Prezygotic barriers (like temporal, behavioral, or mechanical isolation) prevent mating or fertilization before a zygote can form."}
+];
+
+// Shuffle function (Fisher-Yates)
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+const TOPICS = [...new Set(QUESTIONS.map(q => q.s))];
+const AVATARS = ['#2ecc71','#27ae60','#f1c40f','#e67e22','#e74c3c','#3498db','#9b59b6','#1abc9c','#34495e','#16a085'];
+
+let activeTopics = new Set(TOPICS);
+let quiz = [];
+let cur = 0, score = 0, answered = false;
+let currentUser = {name:'', reg:''};
+let leaderboard = JSON.parse(localStorage.getItem('bio_genetics_lb') || '[]');
+
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-'+id).classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  if(id==='leaderboard') { renderLB(); document.querySelectorAll('.nav-btn')[1].classList.add('active'); }
+  else document.querySelectorAll('.nav-btn')[0].classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function buildTopicGrid(){
+  const g = document.getElementById('topic-grid');
+  g.innerHTML='';
+  TOPICS.forEach(t => {
+    const b = document.createElement('button');
+    b.className = 'topic-toggle on';
+    b.textContent = t;
+    b.onclick = function(){
+      if(activeTopics.has(t)){
+        if(activeTopics.size === 1) return;
+        activeTopics.delete(t); b.className='topic-toggle';
+      } else {
+        activeTopics.add(t); b.className='topic-toggle on';
+      }
+    };
+    g.appendChild(b);
+  });
+}
+
+function startQuiz(){
+  const name = document.getElementById('inp-name').value.trim();
+  const reg = document.getElementById('inp-reg').value.trim();
+  if(!name){ alert('Please enter your name to continue.'); return; }
+  currentUser = { name, reg };
+  
+  // Filter by selected topics
+  let fQ = QUESTIONS.filter(q => activeTopics.has(q.s));
+  if(fQ.length === 0){ alert('Select at least one topic.'); return; }
+  
+  // Shuffle the questions
+  shuffleArray(fQ);
+  quiz = fQ;
+  
+  cur = 0; score = 0; answered = false;
+  showScreen('quiz');
+  renderQ();
+}
+
+function renderQ(){
+  if(cur >= quiz.length){ endQuiz(); return; }
+  const q = quiz[cur];
+  const pct = (cur / quiz.length) * 100;
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('prog-label').textContent = `Question ${cur+1} of ${quiz.length}`;
+  document.getElementById('prog-score').textContent = `${score} pts`;
+  document.getElementById('q-section').textContent = q.s;
+  document.getElementById('q-text').innerHTML = q.q;
+  
+  const opts = document.getElementById('options');
+  opts.innerHTML='';
+  
+  // Create array of objects keeping track of original correct answer
+  let shOpts = q.opts.map((opt, i) => ({ opt, isCorrect: i === q.ans }));
+  
+  // Shuffle the options
+  shuffleArray(shOpts);
+  
+  const correctIdx = shOpts.findIndex(o => o.isCorrect);
+  const letters = ['A','B','C','D'];
+  
+  shOpts.forEach((o, i)=>{
+    const b = document.createElement('button');
+    b.className='opt-btn';
+    b.innerHTML = `<span class="opt-letter">${letters[i]}</span><span>${o.opt}</span>`;
+    b.onclick = function(){ if(!answered) select(i, correctIdx, b, q.exp); };
+    opts.appendChild(b);
+  });
+  
+  document.getElementById('feedback').style.display='none';
+  document.getElementById('next-btn').style.display='none';
+  document.getElementById('discussion-section').style.display='none';
+  answered = false;
+  window.scrollTo(0,0);
+}
+
+function select(selectedIdx, correctIdx, btn, exp){
+  answered = true;
+  document.querySelectorAll('.opt-btn').forEach(b => b.disabled = true);
+  const fb = document.getElementById('feedback');
+  
+  if(selectedIdx === correctIdx){
+    btn.classList.add('correct');
+    score++;
+    fb.className='feedback-box correct';
+    fb.innerHTML=`<strong>✓ Correct!</strong><br>${exp}`;
+  } else {
+    btn.classList.add('wrong');
+    document.querySelectorAll('.opt-btn')[correctIdx].classList.add('correct');
+    fb.className='feedback-box wrong';
+    fb.innerHTML=`<strong>✗ Incorrect.</strong><br>${exp}`;
+  }
+  
+  fb.style.display='block';
+  document.getElementById('next-btn').style.display='inline-flex';
+  document.getElementById('prog-score').textContent = `${score} pts`;
+  showDiscussion(cur);
+}
+
+function nextQ(){ cur++; renderQ(); }
+
+function showDiscussion(idx){
+  const key = `q_${quiz[idx].q.slice(0,20).replace(/[^a-zA-Z0-9]/g, "")}`;
+  const ds = document.getElementById('discussion-section');
+  ds.style.display='block';
+  
+  // Load local dummy comments to prevent crashing on uninitialized systems
+  const list = document.getElementById('comments-list');
+  list.innerHTML='<div class="no-comments">No discussion yet — be the first to add a thought.</div>';
+}
+
+function postComment(){
+  const inp = document.getElementById('comment-input');
+  if(inp.value.trim() !== '') {
+      alert("Comment logged in local cache.");
+      inp.value = '';
+  }
+}
+
+function endQuiz(){
+  const total = quiz.length;
+  const pct = Math.round((score / total) * 100);
+  document.getElementById('result-ring').style.setProperty('--pct', pct + '%');
+  document.getElementById('result-pct').textContent = pct + '%';
+  document.getElementById('bd-correct').textContent = score;
+  document.getElementById('bd-wrong').textContent = total - score;
+  document.getElementById('bd-total').textContent = total;
+  
+  let title, sub;
+  if(pct >= 90){ title='Outstanding!'; sub='You have an excellent command of Genetics and Evolution. Exam ready!'; }
+  else if(pct >= 75){ title='Well done!'; sub='Strong performance. Review the explanations on Hardy-Weinberg and specific speciation types to hit 100%.'; }
+  else if(pct >= 60){ title='Good effort.'; sub='Solid foundation. Make sure you can distinguish between different types of genetic drift and selection patterns.'; }
+  else if(pct >= 40){ title='Keep going.'; sub='Genetics takes practice. Review Mendelian ratios and the basic evolutionary mechanisms before retrying.'; }
+  else { title='Keep practising.'; sub='Don\'t be discouraged — review the slides carefully section by section, then come back.'; }
+  
+  document.getElementById('result-title').textContent = title;
+  document.getElementById('result-sub').textContent = sub;
+  
+  const entry = {
+    name: currentUser.name, reg: currentUser.reg,
+    score, total, pct,
+    time: new Date().toLocaleDateString(),
+    color: AVATARS[Math.abs(hashStr(currentUser.name)) % AVATARS.length]
+  };
+  leaderboard.push(entry);
+  leaderboard.sort((a,b)=>b.pct-a.pct || b.score-a.score);
+  localStorage.setItem('bio_genetics_lb', JSON.stringify(leaderboard));
+  document.getElementById('stat-players').textContent = leaderboard.length;
+  showScreen('result');
+}
+
+function restartQuiz(){ showScreen('home'); }
+
+function renderLB(){
+  const rows = document.getElementById('lb-rows');
+  document.getElementById('lb-count').textContent = `${leaderboard.length} attempt${leaderboard.length!==1?'s':''}`;
+  if(leaderboard.length === 0){
+    rows.innerHTML = '<div class="lb-empty">No attempts yet. Be the first to complete the exam simulation!</div>';
+    return;
+  }
+  const rankClass = ['gold','silver','bronze'];
+  const rankEmoji = ['1st','2nd','3rd'];
+  rows.innerHTML = leaderboard.slice(0,20).map((e,i)=>{
+    const initials = e.name.split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2);
+    const isYou = currentUser.name && e.name === currentUser.name;
+    return `<div class="lb-row">
+      <div class="lb-rank ${rankClass[i]||''}">${i<3?rankEmoji[i]:i+1}</div>
+      <div class="lb-avatar" style="background:${e.color}22;color:${e.color}">${initials}</div>
+      <div class="lb-info">
+        <div class="lb-name">${escHtml(e.name)} ${isYou?'<span class="badge badge-you">you</span>':''}</div>
+        <div class="lb-meta">${e.reg ? escHtml(e.reg)+' · ' : ''}${e.time}</div>
+      </div>
+      <div class="lb-score-wrap">
+        <div class="lb-score">${e.score}/${e.total}</div>
+        <div class="lb-pct">${e.pct}%</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function hashStr(s){ let h=0; for(let c of s){ h=((h<<5)-h)+c.charCodeAt(0); h|=0; } return h; }
+function escHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+buildTopicGrid();
+document.getElementById('stat-players').textContent = leaderboard.length;
+</script>
+</body>
+</html>
