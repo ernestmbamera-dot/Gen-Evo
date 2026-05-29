@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Genetics & Evolution Quiz — BIO</title>
+<title>Genetics & Evolution Quiz — BIO 121 / 3121</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
 :root {
-  /* Biology Green Theme */
+  /* Biology Genetics Green Theme */
   --bg: #0b120d;
   --surface: #131e17;
   --surface2: #1c2c22;
@@ -65,11 +65,11 @@ nav {
 .nav-logo span { color: var(--muted); font-weight: 400; }
 .nav-links { display: flex; gap: 6px; }
 .nav-btn { background: transparent; border: 1px solid var(--border2); color: var(--muted); padding: 6px 14px; border-radius: 40px; font-size: 12px; font-family: var(--font-body); cursor: pointer; transition: all 0.2s; }
-.nav-btn:hover, .nav-btn.active { border-color: var(--accent); color: var(--accent); background: var(--pill-bg); }
+.nav-btn:hover, .nav-btn.active { border-color: var(--accent); color: var(--bg); background: var(--accent); }
 
 /* ── HERO ── */
 .hero { padding: 60px 0 40px; }
-.hero-tag { display: inline-flex; align-items: center; gap: 8px; background: var(--pill-bg); border: 1px solid var(--pill-border); color: var(--accent); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 14px; border-radius: 40px; margin-bottom: 28px; }
+.hero-tag { display: inline-flex; align-items: center; gap: 8px; background: var(--pill-bg); border: 1px solid var(--pill-border); color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 14px; border-radius: 40px; margin-bottom: 28px; }
 .hero-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
 @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
 h1 { font-family: var(--font-display); font-size: clamp(36px, 6vw, 58px); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 18px; }
@@ -86,14 +86,14 @@ h1 em { font-style: normal; color: var(--accent); }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
 .form-row.full { grid-template-columns: 1fr; }
 label { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 6px; }
-input, select { width: 100%; background: var(--surface2); border: 1px solid var(--border2); border-radius: 8px; color: var(--text); font-family: var(--font-body); font-size: 14px; padding: 10px 14px; outline: none; transition: border-color 0.2s; }
-input:focus, select:focus { border-color: var(--accent); }
+input { width: 100%; background: var(--surface2); border: 1px solid var(--border2); border-radius: 8px; color: var(--text); font-family: var(--font-body); font-size: 14px; padding: 10px 14px; outline: none; transition: border-color 0.2s; }
+input:focus { border-color: var(--accent); }
 .topic-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
 .topic-toggle { background: var(--surface2); border: 1px solid var(--border2); color: var(--muted); padding: 6px 14px; border-radius: 40px; font-size: 12px; cursor: pointer; font-family: var(--font-body); transition: all 0.2s; }
 .topic-toggle.on { background: var(--pill-bg); border-color: var(--pill-border); color: var(--accent); }
 
 /* ── BUTTONS ── */
-.btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-body); font-size: 14px; font-weight: 700; padding: 11px 22px; border-radius: 40px; cursor: pointer; border: none; transition: all 0.2s; text-decoration: none; color: #000; background: var(--accent); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--font-body); font-size: 14px; font-weight: 700; padding: 11px 22px; border-radius: 40px; cursor: pointer; border: none; transition: all 0.2s; color: #000; background: var(--accent); }
 .btn:hover { background: #27ae60; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3); }
 .btn-ghost { background: transparent; border: 1px solid var(--border2); color: var(--muted); font-weight: 500; }
 .btn-ghost:hover { border-color: var(--border2); color: var(--text); background: var(--surface2); box-shadow: none; }
@@ -101,7 +101,7 @@ input:focus, select:focus { border-color: var(--accent); }
 /* ── PROGRESS ── */
 .progress-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
 .progress-label { font-size: 12px; color: var(--muted); }
-.progress-score { font-family: var(--font-display); font-size: 14px; font-weight: 600; color: var(--accent); }
+.progress-score { font-family: var(--font-display); font-size: 14px; font-weight: 700; color: var(--accent); }
 .progress-track { height: 3px; background: var(--surface2); border-radius: 3px; margin-bottom: 28px; overflow: hidden; }
 .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent2), var(--accent)); border-radius: 3px; transition: width 0.5s cubic-bezier(0.4,0,0.2,1); }
 
@@ -113,16 +113,16 @@ input:focus, select:focus { border-color: var(--accent); }
 .opt-btn { display: flex; align-items: flex-start; gap: 12px; background: var(--surface2); border: 1px solid var(--border2); border-radius: 10px; padding: 13px 16px; text-align: left; cursor: pointer; width: 100%; font-family: var(--font-body); font-size: 14px; color: var(--text); transition: all 0.2s; line-height: 1.5; }
 .opt-btn:hover:not(:disabled) { border-color: var(--accent); background: rgba(46, 204, 113, 0.06); }
 .opt-btn:disabled { cursor: default; }
-.opt-letter { min-width: 24px; height: 24px; border-radius: 6px; background: var(--surface); border: 1px solid var(--border2); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: var(--muted); font-family: var(--font-display); flex-shrink: 0; margin-top: 1px; }
-.opt-btn.correct { border-color: var(--green); background: rgba(46, 204, 113, 0.08); }
+.opt-letter { min-width: 24px; height: 24px; border-radius: 6px; background: var(--border); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: var(--muted); font-family: var(--font-display); flex-shrink: 0; margin-top: 1px; }
+.opt-btn.correct { border-color: var(--green); background: rgba(46,204,113,0.08); }
 .opt-btn.correct .opt-letter { background: var(--green); color: #000; border-color: var(--green); }
-.opt-btn.wrong { border-color: var(--red); background: rgba(239, 68, 68, 0.08); }
+.opt-btn.wrong { border-color: var(--red); background: rgba(231, 76, 60, 0.08); }
 .opt-btn.wrong .opt-letter { background: var(--red); color: #fff; border-color: var(--red); }
 
 /* ── FEEDBACK ── */
 .feedback-box { border-radius: 10px; padding: 14px 16px; font-size: 13px; line-height: 1.65; margin-bottom: 14px; display: none; }
 .feedback-box.correct { background: rgba(46, 204, 113, 0.1); border: 1px solid rgba(46, 204, 113, 0.3); color: #2ecc71; }
-.feedback-box.wrong { background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); color: #e74c3c; }
+.feedback-box.wrong { background: rgba(231, 76, 60, 0.1); border: 1px solid rgba(231, 76, 60, 0.3); color: #e74c3c; }
 .feedback-box strong { display: block; margin-bottom: 4px; font-family: var(--font-display); font-size: 13px; }
 
 /* ── DISCUSSION ── */
@@ -130,7 +130,7 @@ input:focus, select:focus { border-color: var(--accent); }
 .discussion-section h4 { font-family: var(--font-display); font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; }
 .comments-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; max-height: 260px; overflow-y: auto; }
 .comment { background: var(--surface2); border-radius: 8px; padding: 10px 12px; font-size: 13px; border-left: 2px solid var(--accent); }
-.comment-author { font-weight: 600; color: var(--accent); font-size: 12px; margin-bottom: 3px; }
+.comment-author { font-weight: 600; color: var(--accent2); font-size: 12px; margin-bottom: 3px; }
 .comment-text { color: var(--text); line-height: 1.5; }
 .comment-time { font-size: 10px; color: var(--muted); margin-top: 4px; }
 .comment-input-row { display: flex; gap: 8px; }
@@ -160,12 +160,11 @@ input:focus, select:focus { border-color: var(--accent); }
 .lb-header { padding: 20px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
 .lb-header h3 { font-family: var(--font-display); font-size: 17px; font-weight: 700; }
 .lb-row { display: flex; align-items: center; gap: 16px; padding: 14px 24px; border-bottom: 1px solid var(--border); transition: background 0.15s; }
-.lb-row:last-child { border-bottom: none; }
 .lb-row:hover { background: var(--surface2); }
 .lb-rank { font-family: var(--font-display); font-size: 14px; font-weight: 700; color: var(--muted); width: 24px; text-align: center; flex-shrink: 0; }
 .lb-rank.gold { color: #f1c40f; }
-.lb-rank.silver { color: #d4d4d8; }
-.lb-rank.bronze { color: #b45309; }
+.lb-rank.silver { color: #bdc3c7; }
+.lb-rank.bronze { color: #cd7f32; }
 .lb-avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 13px; font-weight: 700; flex-shrink: 0; }
 .lb-info { flex: 1; }
 .lb-name { font-size: 14px; font-weight: 600; }
@@ -175,24 +174,20 @@ input:focus, select:focus { border-color: var(--accent); }
 .lb-pct { font-size: 11px; color: var(--muted); }
 .lb-empty { padding: 36px 24px; text-align: center; color: var(--muted); font-size: 13px; }
 
-/* ── BADGES ── */
-.badge { display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 40px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
-.badge-you { background: rgba(46, 204, 113, 0.15); color: var(--accent); border: 1px solid var(--pill-border); }
-
 /* ── SCROLLBAR ── */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--surface2); border-radius: 6px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
 
-@media(max-width: 560px) { .form-row { grid-template-columns: 1fr; } .result-breakdown { grid-template-columns: 1fr 1fr; } h1 { font-size: 32px; } .q-text { font-size: 16px; } }
+@media(max-width: 560px) { .form-row { grid-template-columns: 1fr; } .result-breakdown { grid-template-columns: 1fr 1fr; } h1 { font-size: 32px; } }
 </style>
 </head>
 <body>
 
 <div class="wrap">
   <nav>
-    <div class="nav-logo">BIO 3121<span>/genetics</span></div>
+    <div class="nav-logo">BIO 121 / 3121<span>/genetics</span></div>
     <div class="nav-links">
       <button class="nav-btn active" onclick="showScreen('home')">Exam Prep</button>
       <button class="nav-btn" onclick="showScreen('leaderboard')">Class Ranks</button>
@@ -201,9 +196,9 @@ input:focus, select:focus { border-color: var(--accent); }
 
   <div id="screen-home" class="screen active">
     <div class="hero">
-      <div class="hero-tag">GENETICS & EVOLUTION · EXAM PREP . Ernest Leo</div>
+      <div class="hero-tag">GENETICS & EVOLUTION · EXAM PREP</div>
       <h1>Master <em>Biological</em><br>Principles</h1>
-      <p class="hero-sub">40 rigorous questions meticulously compiled from Mendelian Genetics, Population Genetics, and Evolutionary Theory to prepare you for finals.</p>
+      <p class="hero-sub">40 rigorous questions meticulously compiled from Mendelian Genetics, Population Genetics, and the Foundations of Evolutionary Theory to prepare you for finals.</p>
       <div class="hero-stats">
         <div class="stat"><div class="stat-n">40</div><div class="stat-l">Questions</div></div>
         <div class="stat"><div class="stat-n">3</div><div class="stat-l">Modules</div></div>
@@ -217,7 +212,7 @@ input:focus, select:focus { border-color: var(--accent); }
       <div class="form-row">
         <div>
           <label>Student Name</label>
-          <input type="text" id="inp-name" placeholder="e.g. Charles Darwin">
+          <input type="text" id="inp-name" placeholder="e.g. Ernest Leo">
         </div>
         <div>
           <label>Registration Number</label>
@@ -307,56 +302,56 @@ input:focus, select:focus { border-color: var(--accent); }
 </div>
 
 <script>
-// BIO QUESTION BANK (40 Questions)
+// BIO QUESTION BANK (40 Questions - NO direction/stabilizing/disruptive selection)
 const QUESTIONS = [
-  // Mendelian Genetics
-  {s:"Mendelian Genetics", q:"Who is widely considered the 'Father of Genetics' for his work with pea plants?", opts:["Charles Darwin", "Gregor Mendel", "James Watson", "Thomas Hunt Morgan"], ans:1, exp:"Gregor Mendel discovered the fundamental laws of inheritance through his work on pea plants in the 1860s."},
-  {s:"Mendelian Genetics", q:"Mendel's Law of Segregation states that:", opts:["Genes for different traits assort independently of one another in the formation of gametes", "During gamete formation, the two alleles for a trait separate, so each gamete carries only one allele", "Dominant alleles will always mask recessive alleles completely", "Mutations occur randomly to create new alleles"], ans:1, exp:"The Law of Segregation dictates that allele pairs separate or segregate during gamete formation, and randomly unite at fertilization."},
-  {s:"Mendelian Genetics", q:"Mendel's Law of Independent Assortment applies primarily to:", opts:["A single trait controlled by one gene", "Genes located on different chromosomes or far apart on the same chromosome", "Genes that are linked closely on the same chromosome", "Traits determined entirely by environmental factors"], ans:1, exp:"The Law of Independent Assortment states that alleles of two (or more) different genes get sorted into gametes independently of one another, provided they are not physically linked on the same chromosome."},
-  {s:"Mendelian Genetics", q:"An organism that possesses two identical alleles for a particular trait (e.g., 'TT' or 'tt') is said to be:", opts:["Heterozygous", "Hemizygous", "Homozygous", "Polygenic"], ans:2, exp:"'Homo' means same. An individual with identical alleles for a gene is homozygous for that trait."},
-  {s:"Mendelian Genetics", q:"The observable physical or biochemical characteristics of an organism, determined by both genetic makeup and environmental influences, is its:", opts:["Genotype", "Karyotype", "Phenotype", "Haplotype"], ans:2, exp:"The genotype is the genetic makeup, while the phenotype is the observable expression of those genes."},
-  {s:"Mendelian Genetics", q:"In a classic Mendelian monohybrid cross between two heterozygotes (Aa x Aa), what is the expected phenotypic ratio if 'A' is completely dominant over 'a'?", opts:["1:2:1", "3:1", "9:3:3:1", "1:1"], ans:1, exp:"The genotypic ratio is 1:2:1 (AA:Aa:aa), but because AA and Aa display the dominant trait, the phenotypic ratio is 3 dominant to 1 recessive."},
-  {s:"Mendelian Genetics", q:"In a dihybrid cross between two individuals heterozygous for two traits (AaBb x AaBb), what is the expected phenotypic ratio?", opts:["9:3:3:1", "1:1:1:1", "3:1", "9:7"], ans:0, exp:"Assuming independent assortment and complete dominance, a dihybrid cross yields a 9:3:3:1 phenotypic ratio."},
-  {s:"Mendelian Genetics", q:"To determine whether an organism expressing a dominant trait is homozygous dominant or heterozygous, one should perform a:", opts:["Dihybrid cross", "Back cross", "Test cross", "Reciprocal cross"], ans:2, exp:"A test cross involves crossing the individual of unknown genotype with a homozygous recessive individual. If any offspring show the recessive trait, the unknown parent must be heterozygous."},
-  {s:"Mendelian Genetics", q:"When true-breeding red snapdragons are crossed with true-breeding white snapdragons, the F1 offspring are all pink. This is an example of:", opts:["Codominance", "Complete dominance", "Incomplete dominance", "Epistasis"], ans:2, exp:"In incomplete dominance, neither allele is completely dominant, resulting in a heterozygous phenotype that is an intermediate blend (pink) of the two parents."},
-  {s:"Mendelian Genetics", q:"In human ABO blood typing, a person with genotype I^A I^B has type AB blood, expressing both A and B antigens equally. This illustrates:", opts:["Incomplete dominance", "Codominance", "Pleiotropy", "Polygenic inheritance"], ans:1, exp:"Codominance occurs when both alleles are fully and simultaneously expressed in the heterozygote."},
-  {s:"Mendelian Genetics", q:"When one single gene influences multiple, seemingly unrelated phenotypic traits (e.g., the gene for sickle cell anemia affecting red blood cells, spleen function, and malaria resistance), this is known as:", opts:["Epistasis", "Polygenic inheritance", "Pleiotropy", "Multiple alleles"], ans:2, exp:"Pleiotropy occurs when one gene impacts multiple phenotypic traits."},
-  {s:"Mendelian Genetics", q:"A phenomenon where the expression of one gene modifies or masks the expression of another completely different gene (e.g., a gene for albinism masking genes for hair color) is called:", opts:["Epistasis", "Pleiotropy", "Incomplete dominance", "Codominance"], ans:0, exp:"Epistasis (meaning 'standing upon') is when one gene locus masks or modifies the phenotypic expression of a second gene locus."},
-  {s:"Mendelian Genetics", q:"Traits like human height and skin color, which show continuous variation and are controlled by the additive effect of two or more genes, are examples of:", opts:["Pleiotropy", "Polygenic inheritance", "Epistasis", "Multiple alleles"], ans:1, exp:"Polygenic inheritance involves multiple genes contributing to a single continuous trait."},
+  // Mendelian Genetics (15 Questions)
+  {s:"Mendelian Genetics", q:"Who is historically recognized as the 'Father of Genetics' for his quantitative experiments with pea plants?", opts:["Gregor Mendel", "Charles Darwin", "Thomas Hunt Morgan", "James Watson"], ans:0, exp:"Gregor Mendel discovered the fundamental laws of inheritance through his work on pea plants in the 1860s."},
+  {s:"Mendelian Genetics", q:"Mendel's Law of Segregation states that:", opts:["During gamete formation, the two alleles for a trait separate, so each gamete carries only one allele for each gene", "Genes for different traits assort independently of one another during gamete formation", "Dominant alleles will always completely mask recessive alleles", "Mutations occur randomly to create new genetic alleles"], ans:0, exp:"The Law of Segregation dictates that allele pairs separate (segregate) during gamete formation, and randomly unite at fertilization."},
+  {s:"Mendelian Genetics", q:"Mendel's Law of Independent Assortment applies primarily to:", opts:["Genes located on different chromosomes or located far apart on the same chromosome", "A single trait controlled by only one gene", "Genes that are linked very closely on the same chromosome", "Traits determined entirely by environmental factors"], ans:0, exp:"The Law of Independent Assortment states that alleles of different genes get sorted into gametes independently of one another, provided they are not physically linked."},
+  {s:"Mendelian Genetics", q:"In genetics, what is the definition of an 'allele'?", opts:["An alternative version or variant of a specific gene", "A physical trait that is observable in an organism", "A chromosome that determines the sex of the organism", "The entire genetic makeup of an individual"], ans:0, exp:"An allele is one of two or more versions of a gene that arise by mutation and are found at the same place (locus) on a chromosome."},
+  {s:"Mendelian Genetics", q:"The specific location or position of a gene on a chromosome is referred to as its:", opts:["Locus", "Centromere", "Telomere", "Allele"], ans:0, exp:"A locus (plural: loci) is the specific physical location of a gene or other significant sequence on a chromosome."},
+  {s:"Mendelian Genetics", q:"An organism that possesses two identical alleles for a particular trait (e.g., 'TT' or 'tt') is said to be:", opts:["Homozygous", "Heterozygous", "Hemizygous", "Polygenic"], ans:0, exp:"'Homo' means same. An individual with identical alleles for a specific gene is homozygous for that trait."},
+  {s:"Mendelian Genetics", q:"Which term describes the observable physical or biochemical characteristics of an organism?", opts:["Phenotype", "Genotype", "Karyotype", "Haplotype"], ans:0, exp:"The genotype is the genetic makeup (the alleles), while the phenotype is the observable expression of those genes (the physical trait)."},
+  {s:"Mendelian Genetics", q:"In a classic Mendelian monohybrid cross between two heterozygotes (Aa x Aa), what is the expected phenotypic ratio if 'A' is completely dominant over 'a'?", opts:["3:1", "1:2:1", "9:3:3:1", "1:1"], ans:0, exp:"The genotypic ratio is 1:2:1 (AA:Aa:aa), but because both AA and Aa display the dominant trait, the phenotypic ratio is 3 dominant to 1 recessive."},
+  {s:"Mendelian Genetics", q:"In a classic Mendelian monohybrid cross between two heterozygotes (Aa x Aa), what is the expected GENOTYPIC ratio?", opts:["1:2:1", "3:1", "9:3:3:1", "2:2"], ans:0, exp:"The cross produces 1 AA, 2 Aa, and 1 aa, resulting in a 1:2:1 genotypic ratio."},
+  {s:"Mendelian Genetics", q:"In a dihybrid cross between two individuals that are heterozygous for two independently assorting traits (AaBb x AaBb), what is the expected phenotypic ratio?", opts:["9:3:3:1", "1:1:1:1", "3:1", "9:7"], ans:0, exp:"Assuming independent assortment and complete dominance for both traits, a classic dihybrid cross yields a 9:3:3:1 phenotypic ratio."},
+  {s:"Mendelian Genetics", q:"To determine whether an organism expressing a dominant trait is homozygous dominant or heterozygous, a geneticist should perform a:", opts:["Test cross", "Dihybrid cross", "Back cross", "Reciprocal cross"], ans:0, exp:"A test cross involves crossing the individual of unknown genotype with a homozygous recessive individual. If any offspring show the recessive trait, the unknown parent must be heterozygous."},
+  {s:"Mendelian Genetics", q:"What does it mean if a plant is 'true-breeding' for a specific trait?", opts:["It is homozygous for that trait and will always produce offspring with the same trait when self-fertilized", "It is heterozygous and will produce a 3:1 ratio of traits when self-fertilized", "It contains a high mutation rate for that trait", "It can only be pollinated by a different species of plant"], ans:0, exp:"True-breeding (or pure-breeding) organisms are homozygous. When self-crossed, they only pass down one type of allele, so all offspring match the parent."},
+  {s:"Mendelian Genetics", q:"What is the primary utility of a Punnett square in genetics?", opts:["To predict the probability of possible genotypes and phenotypes of offspring from a cross", "To physically map the location of a gene on a chromosome", "To determine the exact mutation rate of a population", "To sequence the DNA of the parents"], ans:0, exp:"A Punnett square is a diagram used to predict the expected outcome of a particular cross or breeding experiment."},
+  {s:"Mendelian Genetics", q:"Gametes (sperm and egg cells) are described as being __________, meaning they contain only one set of chromosomes.", opts:["Haploid", "Diploid", "Polyploid", "Aneuploid"], ans:0, exp:"Gametes are haploid (n). When they fuse during fertilization, they form a diploid (2n) zygote."},
+  {s:"Mendelian Genetics", q:"In Mendelian genetics, a 'dominant' allele is defined as one that:", opts:["Fully masks the expression of a recessive allele in a heterozygous individual", "Is always the most common allele in a given population", "Causes genetic mutations to occur more frequently", "Can only be expressed if the individual is homozygous"], ans:0, exp:"Dominance refers to the relationship between alleles where one allele completely masks the phenotypic contribution of the second (recessive) allele in a heterozygote."},
 
-  // Population Genetics
-  {s:"Population Genetics", q:"The Hardy-Weinberg principle states that allele and genotype frequencies in a population will remain constant from generation to generation in the absence of evolutionary influences. What is the fundamental equation for genotype frequencies?", opts:["p + q = 1", "p^2 + 2pq + q^2 = 1", "p^2 + q^2 = 1", "2p + 2q = 1"], ans:1, exp:"The Hardy-Weinberg equation for genotype frequencies is p^2 (homozygous dominant) + 2pq (heterozygous) + q^2 (homozygous recessive) = 1."},
-  {s:"Population Genetics", q:"In the Hardy-Weinberg equation, what does the term '2pq' represent?", opts:["The frequency of the dominant allele", "The frequency of the homozygous dominant genotype", "The frequency of the heterozygous genotype", "The frequency of the recessive allele"], ans:2, exp:"p represents the dominant allele frequency, q the recessive allele frequency. Therefore, 2pq represents the frequency of heterozygous individuals."},
-  {s:"Population Genetics", q:"Which of the following is NOT one of the five conditions required for a population to remain in Hardy-Weinberg equilibrium?", opts:["No mutations", "Random mating", "No gene flow (no migration)", "Small population size"], ans:3, exp:"Hardy-Weinberg equilibrium requires a LARGE (ideally infinite) population size to prevent genetic drift. The other conditions are no mutations, random mating, no gene flow, and no natural selection."},
-  {s:"Population Genetics", q:"A random change in allele frequencies over time, which has a much more pronounced effect in small populations, is known as:", opts:["Gene flow", "Natural selection", "Genetic drift", "Mutation"], ans:2, exp:"Genetic drift is evolution by chance (random fluctuations in allele frequencies). Its effects are strongest in small populations."},
-  {s:"Population Genetics", q:"When a small group of individuals breaks off from a larger population to establish a new colony, the new colony may have different allele frequencies than the original population. This specific type of genetic drift is called:", opts:["The Bottleneck effect", "Gene flow", "The Founder effect", "Assortative mating"], ans:2, exp:"The Founder effect occurs when a new population is founded by a small number of individuals, whose genetic makeup doesn't fully represent the larger original population."},
-  {s:"Population Genetics", q:"A severe natural disaster drastically reduces the size of a population, randomly altering its allele frequencies and reducing genetic diversity. This is an example of:", opts:["The Bottleneck effect", "The Founder effect", "Directional selection", "Gene flow"], ans:0, exp:"The Bottleneck effect occurs when a population's size is suddenly and drastically reduced, leaving a random assortment of survivors."},
-  {s:"Population Genetics", q:"The transfer of alleles into or out of a population due to the migration of fertile individuals or their gametes is termed:", opts:["Genetic drift", "Gene flow", "Mutation", "Non-random mating"], ans:1, exp:"Gene flow is the movement of alleles between populations through migration, which tends to reduce genetic differences between those populations over time."},
-  {s:"Population Genetics", q:"What is the ultimate source of all NEW alleles and genetic variation in a population?", opts:["Genetic drift", "Gene flow", "Natural selection", "Mutation"], ans:3, exp:"While mechanisms like gene flow and crossing over mix existing alleles, random mutation (changes in the DNA sequence) is the only way entirely new alleles are created."},
-  {s:"Population Genetics", q:"If individuals in a population prefer to mate with others that are phenotypically similar to themselves, this is a violation of Hardy-Weinberg equilibrium known as:", opts:["Gene flow", "Assortative (non-random) mating", "Genetic drift", "Natural selection"], ans:1, exp:"Assortative mating is non-random mating based on phenotypic similarities, which alters genotype frequencies (usually increasing homozygosity)."},
-  {s:"Population Genetics", q:"If the frequency of the recessive allele (q) for a trait is 0.4 in a population in Hardy-Weinberg equilibrium, what is the frequency of the dominant allele (p)?", opts:["0.4", "0.16", "0.6", "0.36"], ans:2, exp:"Since there are only two alleles for this trait, p + q = 1. Therefore, p = 1 - 0.4 = 0.6."},
-  {s:"Population Genetics", q:"Changes in allele frequencies within a single population over a relatively short period of time is defined as:", opts:["Macroevolution", "Microevolution", "Speciation", "Convergent evolution"], ans:1, exp:"Microevolution deals with short-term, small-scale evolutionary changes within a population (changes in allele frequencies)."},
-  {s:"Population Genetics", q:"A mode of natural selection that favors individuals at one extreme of a phenotypic range, shifting the population's trait distribution in that direction, is called:", opts:["Stabilizing selection", "Disruptive selection", "Directional selection", "Sexual selection"], ans:2, exp:"Directional selection favors one extreme phenotype over the mean or other extreme, causing the allele frequency to shift over time in the direction of that phenotype."},
+  // Population Genetics (15 Questions)
+  {s:"Population Genetics", q:"Population genetics is best defined as the study of:", opts:["How allele frequencies in a population change over time under the influence of evolutionary forces", "The physical anatomy of extinct populations", "How individual organisms develop from embryos to adults", "The chemical structure of DNA within a single cell"], ans:0, exp:"Population genetics merges Mendelian genetics with Darwinian evolution, studying the genetic composition of populations and how it changes."},
+  {s:"Population Genetics", q:"The total collection of all the genes, and all the different alleles for those genes, present in a population at any given time is called the:", opts:["Gene pool", "Genome", "Genotype", "Karyotype"], ans:0, exp:"The gene pool represents the entire genetic diversity found within a population or species."},
+  {s:"Population Genetics", q:"The Hardy-Weinberg equation for calculating GENOTYPE frequencies in a population is:", opts:["p² + 2pq + q² = 1", "p + q = 1", "p² + q² = 1", "2p + 2q = 1"], ans:0, exp:"The Hardy-Weinberg equation for genotype frequencies is p² (homozygous dominant) + 2pq (heterozygous) + q² (homozygous recessive) = 1."},
+  {s:"Population Genetics", q:"In the Hardy-Weinberg equations, what is represented by the formula 'p + q = 1'?", opts:["The sum of all allele frequencies in the population equals 100%", "The sum of all genotype frequencies equals 1", "The mutation rate is constant", "The population size remains constant"], ans:0, exp:"p is the frequency of the dominant allele, and q is the frequency of the recessive allele. Together, they account for 100% (or 1.0) of the alleles for that gene."},
+  {s:"Population Genetics", q:"In the Hardy-Weinberg equation (p² + 2pq + q² = 1), what does the term 'p²' specifically represent?", opts:["The frequency of the homozygous dominant genotype", "The frequency of the dominant allele", "The frequency of the heterozygous genotype", "The frequency of the recessive allele"], ans:0, exp:"p is the dominant allele frequency. Therefore, p² (p times p) is the expected frequency of individuals inheriting two dominant alleles (homozygous dominant)."},
+  {s:"Population Genetics", q:"In the Hardy-Weinberg equation, what does the term '2pq' represent?", opts:["The frequency of the heterozygous genotype", "The frequency of the dominant allele", "The frequency of the homozygous recessive genotype", "The mutation rate of the population"], ans:0, exp:"2pq represents the frequency of heterozygous individuals (inheriting 'p' from one parent and 'q' from the other, which can happen in two ways)."},
+  {s:"Population Genetics", q:"Which of the following is NOT one of the five conditions required for a population to remain in Hardy-Weinberg equilibrium?", opts:["Small population size", "No mutations", "Random mating", "No gene flow (no migration)"], ans:0, exp:"Hardy-Weinberg equilibrium requires a LARGE (ideally infinite) population size to prevent random genetic drift from altering allele frequencies."},
+  {s:"Population Genetics", q:"For a population to remain in Hardy-Weinberg equilibrium, mating must be:", opts:["Completely random", "Assortative (based on physical traits)", "Restricted to close relatives", "Determined by natural selection"], ans:0, exp:"Random mating ensures that alleles mix predictably based on their frequencies. Non-random mating alters genotype frequencies."},
+  {s:"Population Genetics", q:"Which condition of Hardy-Weinberg equilibrium ensures that no new alleles are introduced into the gene pool from outside populations?", opts:["No gene flow (no migration)", "No mutations", "Large population size", "No natural selection"], ans:0, exp:"Gene flow is the movement of alleles in or out of a population. For equilibrium to hold, the population must be isolated (no gene flow)."},
+  {s:"Population Genetics", q:"If a population is in Hardy-Weinberg equilibrium, it implies that the population is:", opts:["NOT evolving for that specific gene", "Evolving rapidly", "Experiencing a high rate of mutation", "Undergoing severe natural selection"], ans:0, exp:"Hardy-Weinberg equilibrium serves as a null hypothesis. If the frequencies remain constant (in equilibrium), no evolution is occurring for that locus."},
+  {s:"Population Genetics", q:"A random, unpredictable change in allele frequencies over time, which has a much more pronounced effect in small populations, is known as:", opts:["Genetic drift", "Gene flow", "Natural selection", "Mutation"], ans:0, exp:"Genetic drift is evolution by random chance (e.g., random mating events or deaths). Its effects are mathematically much stronger in small populations."},
+  {s:"Population Genetics", q:"When a severe natural disaster drastically reduces the size of a population, leaving a random, small assortment of survivors with altered allele frequencies, this is called:", opts:["The Bottleneck effect", "The Founder effect", "Gene flow", "Artificial selection"], ans:0, exp:"The Bottleneck effect occurs when a population's size is suddenly and drastically reduced, squeezing the gene pool through a 'bottleneck'."},
+  {s:"Population Genetics", q:"When a small group of individuals breaks off from a larger population to establish a new, isolated colony, the genetic makeup of the new colony may differ from the original population. This is called:", opts:["The Founder effect", "The Bottleneck effect", "Gene flow", "Assortative mating"], ans:0, exp:"The Founder effect occurs when a new population is founded by a small number of individuals, whose limited genes 'found' the new gene pool."},
+  {s:"Population Genetics", q:"The transfer of alleles into or out of a population due to the physical movement of fertile individuals or their gametes is defined as:", opts:["Gene flow", "Genetic drift", "Mutation", "Non-random mating"], ans:0, exp:"Gene flow (migration) moves alleles between populations, which tends to reduce genetic differences between those populations over time."},
+  {s:"Population Genetics", q:"What is the ultimate source of ALL new genetic variation and new alleles in a population?", opts:["Random Mutation", "Genetic drift", "Gene flow", "Natural selection"], ans:0, exp:"While mechanisms like gene flow mix existing alleles, random mutation (changes in the DNA sequence) is the only mechanism that creates entirely new alleles."},
 
-  // Evolution & Speciation
-  {s:"Evolution", q:"Which mechanism did Charles Darwin propose as the primary driver of evolution?", opts:["Inheritance of acquired characteristics", "Natural Selection", "Genetic drift", "Intelligent design"], ans:1, exp:"Darwin (along with Wallace) proposed Natural Selection—the differential survival and reproduction of individuals due to differences in phenotype."},
-  {s:"Evolution", q:"In evolutionary terms, 'biological fitness' is best defined as:", opts:["The physical strength and speed of an organism", "An organism's ability to survive and produce viable, fertile offspring relative to others in the population", "An organism's ability to mutate rapidly", "The lifespan of an organism"], ans:1, exp:"Evolutionary fitness is a measure of reproductive success—how well an organism passes its genes to the next generation compared to others."},
-  {s:"Evolution", q:"The forelimbs of humans, whales, and bats have very different functions, yet they share a similar underlying bone structure derived from a common ancestor. These are examples of:", opts:["Analogous structures", "Vestigial structures", "Homologous structures", "Convergent structures"], ans:2, exp:"Homologous structures share a common evolutionary origin and anatomical plan, even if their current functions have diverged."},
-  {s:"Evolution", q:"The wings of birds and the wings of insects serve the same function (flight) but evolved independently from different ancestral structures. These are examples of:", opts:["Homologous structures", "Analogous structures", "Vestigial structures", "Divergent structures"], ans:1, exp:"Analogous structures arise due to convergent evolution; they perform similar functions due to similar environmental pressures, not common ancestry."},
-  {s:"Evolution", q:"The process by which unrelated organisms independently evolve similar traits when adapting to similar environments (like the streamlined shapes of sharks and dolphins) is called:", opts:["Divergent evolution", "Convergent evolution", "Coevolution", "Adaptive radiation"], ans:1, exp:"Convergent evolution leads to analogous structures, where different lineages evolve similar adaptations due to similar ecological niches."},
-  {s:"Evolution", q:"When two or more related species become increasingly dissimilar over time, often due to differing environmental pressures (e.g., Darwin's finches), this is known as:", opts:["Convergent evolution", "Divergent evolution", "Stabilizing selection", "Parallel evolution"], ans:1, exp:"Divergent evolution (or adaptive radiation) occurs when closely related populations accumulate differences, leading to speciation."},
-  {s:"Evolution", q:"The human appendix and the pelvic bones in whales are remnants of structures that had important functions in ancestors but are now reduced and largely functionless. These are called:", opts:["Homologous structures", "Analogous structures", "Vestigial structures", "Embryological structures"], ans:2, exp:"Vestigial structures are anatomical remnants that were functional in the organism's ancestors but have lost their original function through evolution."},
-  {s:"Evolution", q:"Speciation that occurs when a population is physically separated by a geographic barrier (like a mountain range or river) is termed:", opts:["Sympatric speciation", "Allopatric speciation", "Parapatric speciation", "Artificial speciation"], ans:1, exp:"'Allo' means other, 'patric' means place. Allopatric speciation happens when geographic isolation prevents gene flow, allowing the separated populations to diverge genetically."},
-  {s:"Evolution", q:"Speciation that occurs without geographic isolation, where populations diverge into new species while living in the same area (often via polyploidy in plants), is called:", opts:["Allopatric speciation", "Sympatric speciation", "Allogenic speciation", "Disruptive speciation"], ans:1, exp:"'Sym' means same, 'patric' means place. Sympatric speciation occurs within populations that share the same geographic area."},
-  {s:"Evolution", q:"A mode of natural selection that favors intermediate variants and acts against extreme phenotypes (e.g., human birth weights) is called:", opts:["Directional selection", "Disruptive selection", "Stabilizing selection", "Artificial selection"], ans:2, exp:"Stabilizing selection reduces phenotypic variation by selecting against the extremes, favoring the average phenotype."},
-  {s:"Evolution", q:"A mode of natural selection that favors individuals at BOTH extremes of the phenotypic range over the intermediate phenotypes is known as:", opts:["Stabilizing selection", "Disruptive selection", "Directional selection", "Sexual selection"], ans:1, exp:"Disruptive (or diversifying) selection favors both extremes, which can eventually lead to a population splitting into two distinct species."},
-  {s:"Evolution", q:"Peacocks possess massive, brightly colored tails that hinder their survival against predators but greatly increase their chances of mating. The evolution of such traits is driven by:", opts:["Natural selection for survival", "Genetic drift", "Sexual selection", "Gene flow"], ans:2, exp:"Sexual selection is a form of natural selection where certain traits increase mating success, sometimes at the cost of survival ability."},
-  {s:"Evolution", q:"Which of the following provides strong evidence that all life shares a common evolutionary ancestor?", opts:["The universal nature of the genetic code (DNA/RNA)", "The presence of analogous structures", "The bottleneck effect", "The occurrence of genetic drift"], ans:0, exp:"Molecular biology reveals that all living organisms use essentially the same genetic code, providing powerful evidence for a single common ancestor."},
-  {s:"Evolution", q:"The study of the geographical distribution of extinct and modern species to understand their evolutionary history is known as:", opts:["Embryology", "Comparative anatomy", "Biogeography", "Molecular biology"], ans:2, exp:"Biogeography studies how continents moving over time (plate tectonics) and environmental changes affect where species are found, offering evidence for evolution."},
-  {s:"Evolution", q:"Which type of reproductive isolating mechanism prevents the fertilization of an egg from occurring in the first place (e.g., different mating seasons)?", opts:["Postzygotic barrier", "Prezygotic barrier", "Hybrid breakdown", "Hybrid sterility"], ans:1, exp:"Prezygotic barriers (like temporal, behavioral, or mechanical isolation) prevent mating or fertilization before a zygote can form."}
+  // Evolution (10 Questions - strictly avoiding directional/stabilizing/disruptive selection)
+  {s:"Evolution", q:"In biological terms, what is the most accurate definition of Evolution?", opts:["A change in the allele frequencies of a population over generations (descent with modification)", "The process by which an individual organism adapts to its environment during its lifetime", "The inevitable progression of simple organisms into more complex, perfect beings", "The sudden appearance of new species due to environmental catastrophes"], ans:0, exp:"Evolution is defined at the population level as a change in allele frequencies over time, or broadly as 'descent with modification'."},
+  {s:"Evolution", q:"Which mechanism did Charles Darwin propose as the primary driver of adaptive evolution?", opts:["Natural Selection", "Inheritance of acquired characteristics", "Genetic drift", "The Founder effect"], ans:0, exp:"Darwin (along with Wallace) proposed Natural Selection—the differential survival and reproduction of individuals due to beneficial traits."},
+  {s:"Evolution", q:"In the context of natural selection, 'biological fitness' is best defined as:", opts:["An organism's ability to survive and produce viable, fertile offspring relative to others in the population", "The physical strength, speed, and health of an organism", "An organism's ability to undergo beneficial genetic mutations", "The maximum lifespan of an organism in the wild"], ans:0, exp:"Evolutionary fitness is not about physical strength; it is a measure of reproductive success and genetic contribution to the next generation."},
+  {s:"Evolution", q:"The forelimbs of humans, whales, and bats have very different functions, yet they share a similar underlying bone structure derived from a common ancestor. These are examples of:", opts:["Homologous structures", "Analogous structures", "Vestigial structures", "Convergent structures"], ans:0, exp:"Homologous structures share a common evolutionary origin and anatomical plan, even if their current functions have diverged."},
+  {s:"Evolution", q:"The wings of birds and the wings of insects serve the same function (flight) but evolved independently from entirely different ancestral structures. These are examples of:", opts:["Analogous structures", "Homologous structures", "Vestigial structures", "Divergent structures"], ans:0, exp:"Analogous structures arise due to convergent evolution; they perform similar functions due to similar environmental pressures, not common ancestry."},
+  {s:"Evolution", q:"The human appendix and the pelvic bones in modern whales are remnants of structures that had important functions in ancestors but are now reduced and largely functionless. These are called:", opts:["Vestigial structures", "Homologous structures", "Analogous structures", "Embryological structures"], ans:0, exp:"Vestigial structures are anatomical remnants that were functional in the organism's ancestors but have lost their original function through evolution."},
+  {s:"Evolution", q:"The process by which completely unrelated organisms independently evolve similar physical traits when adapting to similar environments (like the streamlined shapes of sharks and dolphins) is called:", opts:["Convergent evolution", "Divergent evolution", "Coevolution", "Adaptive radiation"], ans:0, exp:"Convergent evolution leads to analogous structures, where different lineages evolve similar adaptations to conquer similar ecological niches."},
+  {s:"Evolution", q:"When two or more related species become increasingly dissimilar over time, often due to adapting to differing environmental pressures (e.g., Darwin's finches developing different beaks), this is known as:", opts:["Divergent evolution", "Convergent evolution", "Stabilizing selection", "Parallel evolution"], ans:0, exp:"Divergent evolution (or adaptive radiation) occurs when closely related populations accumulate differences, leading to distinct species."},
+  {s:"Evolution", q:"How does the fossil record provide direct evidence for evolution?", opts:["By preserving chronological sequences of past organisms showing transitional forms and progressive changes over millions of years", "By proving that the Earth is only a few thousand years old", "By showing that all modern species existed exactly as they are in the oldest rock layers", "By preserving the exact DNA sequences of every extinct species"], ans:0, exp:"The fossil record provides a visual, chronological history of life on Earth, revealing transitional fossils that link ancient species to modern ones."},
+  {s:"Evolution", q:"The process where humans intentionally breed plants or animals to produce specific, desirable traits (like breeding different varieties of dogs or crops) is known as:", opts:["Artificial selection", "Natural selection", "Genetic drift", "Gene flow"], ans:0, exp:"Artificial selection is human-directed evolution. Darwin used artificial selection in agriculture and animal breeding as a model to explain natural selection."}
 ];
 
-// Shuffle function (Fisher-Yates)
+// Fisher-Yates Shuffle Algorithm
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -371,7 +366,11 @@ let activeTopics = new Set(TOPICS);
 let quiz = [];
 let cur = 0, score = 0, answered = false;
 let currentUser = {name:'', reg:''};
-let leaderboard = JSON.parse(localStorage.getItem('bio_genetics_lb') || '[]');
+let leaderboard = JSON.parse(localStorage.getItem('bio121_genetics_v3_lb') || '[]');
+let comments = JSON.parse(localStorage.getItem('bio121_genetics_v3_comments') || '{}');
+
+function saveComments(){ localStorage.setItem('bio121_genetics_v3_comments', JSON.stringify(comments)); }
+function saveLB(){ localStorage.setItem('bio121_genetics_v3_lb', JSON.stringify(leaderboard)); }
 
 function showScreen(id){
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -401,17 +400,20 @@ function buildTopicGrid(){
   });
 }
 
+function updateStatPlayers(){
+  document.getElementById('stat-players').textContent = leaderboard.length;
+}
+
 function startQuiz(){
   const name = document.getElementById('inp-name').value.trim();
   const reg = document.getElementById('inp-reg').value.trim();
   if(!name){ alert('Please enter your name to continue.'); return; }
   currentUser = { name, reg };
   
-  // Filter by selected topics
   let fQ = QUESTIONS.filter(q => activeTopics.has(q.s));
   if(fQ.length === 0){ alert('Select at least one topic.'); return; }
   
-  // Shuffle the questions
+  // Shuffle the questions perfectly
   shuffleArray(fQ);
   quiz = fQ;
   
@@ -433,16 +435,15 @@ function renderQ(){
   const opts = document.getElementById('options');
   opts.innerHTML='';
   
-  // Create array of objects keeping track of original correct answer
-  let shOpts = q.opts.map((opt, i) => ({ opt, isCorrect: i === q.ans }));
-  
-  // Shuffle the options
+  // Map options and shuffle them
+  let shOpts = q.opts.map((opt, i) => ({opt, isCorrect: i===q.ans}));
   shuffleArray(shOpts);
   
+  // Find where the correct answer ended up
   const correctIdx = shOpts.findIndex(o => o.isCorrect);
+
   const letters = ['A','B','C','D'];
-  
-  shOpts.forEach((o, i)=>{
+  shOpts.forEach((o,i)=>{
     const b = document.createElement('button');
     b.className='opt-btn';
     b.innerHTML = `<span class="opt-letter">${letters[i]}</span><span>${o.opt}</span>`;
@@ -483,11 +484,10 @@ function select(selectedIdx, correctIdx, btn, exp){
 function nextQ(){ cur++; renderQ(); }
 
 function showDiscussion(idx){
-  const key = `q_${quiz[idx].q.slice(0,20).replace(/[^a-zA-Z0-9]/g, "")}`;
+  const key = `q_bio_${quiz[idx].q.slice(0,20).replace(/[^a-zA-Z0-9]/g, "")}`;
   const ds = document.getElementById('discussion-section');
   ds.style.display='block';
   
-  // Load local dummy comments to prevent crashing on uninitialized systems
   const list = document.getElementById('comments-list');
   list.innerHTML='<div class="no-comments">No discussion yet — be the first to add a thought.</div>';
 }
@@ -495,7 +495,7 @@ function showDiscussion(idx){
 function postComment(){
   const inp = document.getElementById('comment-input');
   if(inp.value.trim() !== '') {
-      alert("Comment logged in local cache.");
+      alert("Study note recorded locally.");
       inp.value = '';
   }
 }
@@ -510,11 +510,10 @@ function endQuiz(){
   document.getElementById('bd-total').textContent = total;
   
   let title, sub;
-  if(pct >= 90){ title='Outstanding!'; sub='You have an excellent command of Genetics and Evolution. Exam ready!'; }
-  else if(pct >= 75){ title='Well done!'; sub='Strong performance. Review the explanations on Hardy-Weinberg and specific speciation types to hit 100%.'; }
-  else if(pct >= 60){ title='Good effort.'; sub='Solid foundation. Make sure you can distinguish between different types of genetic drift and selection patterns.'; }
-  else if(pct >= 40){ title='Keep going.'; sub='Genetics takes practice. Review Mendelian ratios and the basic evolutionary mechanisms before retrying.'; }
-  else { title='Keep practising.'; sub='Don\'t be discouraged — review the slides carefully section by section, then come back.'; }
+  if(pct >= 90){ title='Master Biologist!'; sub='Exceptional understanding of Genetics and Evolution. Exam ready!'; }
+  else if(pct >= 75){ title='Well done!'; sub='Strong performance. Review the explanations on Hardy-Weinberg and genetic drift to hit 100%.'; }
+  else if(pct >= 60){ title='Good effort.'; sub='Solid foundation. Make sure you can distinguish between different evolutionary structures and Mendelian ratios.'; }
+  else { title='Keep studying.'; sub='You need a thorough review of the Genetics and Evolution concepts. Rerun the simulation after studying.'; }
   
   document.getElementById('result-title').textContent = title;
   document.getElementById('result-sub').textContent = sub;
@@ -527,7 +526,7 @@ function endQuiz(){
   };
   leaderboard.push(entry);
   leaderboard.sort((a,b)=>b.pct-a.pct || b.score-a.score);
-  localStorage.setItem('bio_genetics_lb', JSON.stringify(leaderboard));
+  saveLB();
   document.getElementById('stat-players').textContent = leaderboard.length;
   showScreen('result');
 }
@@ -538,7 +537,7 @@ function renderLB(){
   const rows = document.getElementById('lb-rows');
   document.getElementById('lb-count').textContent = `${leaderboard.length} attempt${leaderboard.length!==1?'s':''}`;
   if(leaderboard.length === 0){
-    rows.innerHTML = '<div class="lb-empty">No attempts yet. Be the first to complete the exam simulation!</div>';
+    rows.innerHTML = '<div class="lb-empty">No attempts yet. Initiate the first sequence!</div>';
     return;
   }
   const rankClass = ['gold','silver','bronze'];
